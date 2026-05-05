@@ -1,16 +1,1479 @@
 <!DOCTYPE html>
-<html lang="es">
+<!--
+  ================================================================
+  index.html — Página Principal
+  Módulo: Mantenimiento y Aseguramiento de la Operación del
+          Sistema Informático
+  
+  Descripción: Página informativa completa con navegación por
+  menús, barra de búsqueda funcional, múltiples secciones de
+  contenido y diseño responsivo.
+  
+  Archivos relacionados:
+    - style.css  → Todos los estilos visuales
+    - README.md  → Documentación del proyecto
+  ================================================================
+-->
+<html lang="es" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <h1>Ejercicio de Emily</h1>
+  <!-- ── Meta básicos: codificación y viewport para responsivo ── -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- ── SEO básico ── -->
+  <meta name="description" content="Módulo informativo sobre Mantenimiento y Aseguramiento de la Operación del Sistema Informático. Tipos de mantenimiento, herramientas, seguridad y recursos." />
+  <meta name="keywords" content="mantenimiento, sistema informático, preventivo, correctivo, seguridad, hardware, software" />
+  <meta name="author" content="Módulo Informático Educativo" />
+
+  <!-- ── Título de la pestaña del navegador ── -->
+  <title>ManteSis | Mantenimiento y Aseguramiento de Sistemas</title>
+
+  <!-- ── Ícono de la pestaña (favicon en emoji) ── -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖥️</text></svg>" />
+
+  <!-- ── Hoja de estilos principal ── -->
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    Esto es un ejemplo básico en el cual estoy utilizando comandos para repositorios
-</body>
-</html>
-    <!-- En esta parte se coloca todo lo que v a contener la pagina web-->>
-    <p> Este es mi segundo repositorio con este archivomodificado</p>
+
+  <!-- ================================================================
+       COMPONENTE: NAVBAR (Barra de navegación fija)
+       Permanece visible en todo momento al hacer scroll.
+       Contiene: logo, menú principal con submenús, búsqueda y controles.
+       ================================================================ -->
+  <nav class="navbar" role="navigation" aria-label="Navegación principal">
+    <div class="navbar-inner">
+
+      <!-- ── Logo: nombre del sitio + ícono ── -->
+      <a href="#inicio" class="navbar-logo" aria-label="Ir al inicio">
+        <div class="logo-icon" aria-hidden="true">🖥️</div>
+        <span class="logo-text">Mante<span>Sis</span></span>
+      </a>
+
+      <!-- ── Menú de navegación principal con submenús ──
+           role="menubar" indica que es una barra de menú accesible.
+           Cada <li> con clase .nav-item puede tener un .submenu.
+           ── -->
+      <ul class="nav-menu" role="menubar" id="navMenu">
+
+        <!-- Ítem 1: Inicio (enlace directo, sin submenú) -->
+        <li class="nav-item" role="none">
+          <a href="#inicio" class="nav-link active" role="menuitem">
+            🏠 Inicio
+          </a>
+        </li>
+
+        <!-- Ítem 2: Mantenimiento (con submenú desplegable) -->
+        <li class="nav-item" role="none">
+          <a href="#mantenimiento" class="nav-link" role="menuitem"
+             aria-haspopup="true" aria-expanded="false">
+            🔧 Mantenimiento
+            <span class="nav-arrow" aria-hidden="true">▾</span>
+          </a>
+          <!-- Submenú de Mantenimiento -->
+          <ul class="submenu" role="menu" aria-label="Tipos de mantenimiento">
+            <li role="none">
+              <a href="#preventivo" class="submenu-link" role="menuitem">
+                <span class="submenu-icon" aria-hidden="true">🛡️</span>
+                Preventivo
+              </a>
+            </li>
+            <li role="none">
+              <a href="#correctivo" class="submenu-link" role="menuitem">
+                <span class="submenu-icon" aria-hidden="true">🔨</span>
+                Correctivo
+              </a>
+            </li>
+            <li role="none">
+              <a href="#predictivo" class="submenu-link" role="menuitem">
+                <span class="submenu-icon" aria-hidden="true">📊</span>
+                Predictivo
+              </a>
+            </li>
+            <li role="none">
+              <a href="#evolutivo" class="submenu-link" role="menuitem">
+                <span class="submenu-icon" aria-hidden="true">🚀</span>
+                Evolutivo
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Ítem 3: Herramientas (con submenú) -->
+        <li class="nav-item" role="none">
+          <a href="#herramientas" class="nav-link" role="menuitem"
+              aria-haspopup="true" aria-expanded="false">
+            🛠️ Herramientas
+            <span class="nav-arrow" aria-hidden="true">▾</span>
+          </a>
+          <ul class="submenu" role="menu" aria-label="Categorías de herramientas">
+            <li role="none">
+              <a href="#software-tools" class="submenu-link" role="menuitem">
+                <span class="submenu-icon" aria-hidden="true">💾</span>
+                Software
+              </a>
+            </li>
+            <li role="none">
+              <a href="#hardware-tools" class="submenu-link" role="menuitem">
+                <span class="submenu-icon" aria-hidden="true">🔌</span>
+                Hardware
+              </a>
+            </li>
+            <li role="none">
+              <a href="#diagnostico" class="submenu-link" role="menuitem">
+                <span class="submenu-icon" aria-hidden="true">🔍</span>
+                Diagnóstico
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Ítem 4: Seguridad (con submenú) -->
+        <li class="nav-item" role="none">
+          <a href="#seguridad" class="nav-link" role="menuitem"
+             aria-haspopup="true" aria-expanded="false">
+            🔒 Seguridad
+            <span class="nav-arrow" aria-hidden="true">▾</span>
+          </a>
+          <ul class="submenu" role="menu" aria-label="Áreas de seguridad">
+            <li role="none">
+              <a href="#politicas" class="submenu-link" role="menuitem">
+                <span class="submenu-icon" aria-hidden="true">📋</span>
+                Políticas
+              </a>
+            </li>
+            <li role="none">
+              <a href="#backup" class="submenu-link" role="menuitem">
+                <span class="submenu-icon" aria-hidden="true">💾</span>
+                Copias de Seguridad
+              </a>
+            </li>
+            <li role="none">
+              <a href="#acceso" class="submenu-link" role="menuitem">
+                <span class="submenu-icon" aria-hidden="true">🔑</span>
+                Control de Acceso
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Ítem 5: Recursos (con submenú) -->
+        <li class="nav-item" role="none">
+          <a href="#recursos" class="nav-link" role="menuitem"
+             aria-haspopup="true" aria-expanded="false">
+            📚 Recursos
+            <span class="nav-arrow" aria-hidden="true">▾</span>
+          </a>
+          <ul class="submenu" role="menu" aria-label="Tipos de recursos">
+            <li role="none">
+              <a href="#guias" class="submenu-link" role="menuitem">
+                <span class="submenu-icon" aria-hidden="true">📖</span>
+                Guías
+              </a>
+            </li>
+            <li role="none">
+              <a href="#videos" class="submenu-link" role="menuitem">
+                <span class="submenu-icon" aria-hidden="true">🎬</span>
+                Videos
+              </a>
+            </li>
+            <li role="none">
+              <a href="#referencias" class="submenu-link" role="menuitem">
+                <span class="submenu-icon" aria-hidden="true">🔗</span>
+                Referencias
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Ítem 6: Contacto (enlace directo) -->
+        <li class="nav-item" role="none">
+          <a href="#contacto" class="nav-link" role="menuitem">
+            ✉️ Contacto
+          </a>
+        </li>
+
+      </ul><!-- /nav-menu -->
+
+      <!-- ── Barra de búsqueda con resultados en tiempo real ──
+           Filtra contenido del sitio mientras el usuario escribe.
+           El div .search-results se popula dinámicamente con JS.
+           ── -->
+      <div class="search-container" role="search">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input
+          type="search"
+          class="search-input"
+          id="searchInput"
+          placeholder="Buscar en el sitio..."
+          autocomplete="off"
+          aria-label="Buscar contenido"
+          aria-controls="searchResults"
+          aria-autocomplete="list"
+        />
+        <!-- Botón X para limpiar la búsqueda rápidamente -->
+        <button class="search-clear" id="searchClear"
+                aria-label="Limpiar búsqueda" title="Limpiar">✕</button>
+        <!-- Panel de resultados generado por JS -->
+        <div class="search-results" id="searchResults" role="listbox"
+             aria-label="Resultados de búsqueda"></div>
+      </div>
+
+      <!-- ── Controles: toggle tema + botón menú móvil ── -->
+      <div class="nav-controls">
+        <!-- Botón para alternar entre tema oscuro y claro -->
+        <button class="theme-toggle" id="themeToggle"
+                aria-label="Cambiar tema de color" title="Cambiar tema">
+          🌙
+        </button>
+        <!-- Botón hamburguesa visible solo en móvil -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn"
+                aria-label="Abrir menú móvil" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div><!-- /navbar-inner -->
+  </nav><!-- /navbar -->
+
+
+  <!-- ================================================================
+       CONTENIDO PRINCIPAL
+       Todas las secciones del sitio. Cada sección tiene un id
+       que coincide con los enlaces del menú de navegación.
+       ================================================================ -->
+  <main id="main-content">
+
+    <!-- ──────────────────────────────────────────────────────────────
+         SECCIÓN: INICIO / HERO
+         Portada del sitio con título, descripción, estadísticas y
+         diagrama visual interactivo del sistema.
+         ────────────────────────────────────────────────────────────── -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-content">
+
+        <!-- Columna izquierda: texto y estadísticas -->
+        <div class="hero-text">
+          <!-- Etiqueta de módulo -->
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            Módulo Informático Activo
+          </div>
+
+          <!-- Título principal con gradient en parte del texto -->
+          <h1 class="hero-title" id="hero-title">
+            Mantenimiento &amp;<br />
+            <span class="gradient-text">Aseguramiento del</span><br />
+            Sistema Informático
+          </h1>
+
+          <!-- Descripción del módulo -->
+          <p class="hero-description">
+            Conoce los fundamentos del mantenimiento preventivo, correctivo,
+            predictivo y evolutivo de sistemas informáticos, junto con las
+            mejores prácticas de aseguramiento y continuidad operacional.
+          </p>
+
+          <!-- Botones de acción -->
+          <div class="hero-cta">
+            <a href="#mantenimiento" class="btn btn-primary">
+              🔧 Explorar Módulo
+            </a>
+            <a href="#recursos" class="btn btn-ghost">
+              📚 Ver Recursos
+            </a>
+          </div>
+
+          <!-- Estadísticas rápidas del módulo -->
+          <div class="hero-stats">
+            <div class="stat-card">
+              <div class="stat-number">4</div>
+              <div class="stat-label">Tipos de Mantenimiento</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">20+</div>
+              <div class="stat-label">Herramientas</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Disponibilidad</div>
+            </div>
+          </div>
+        </div><!-- /hero-text -->
+
+        <!-- Columna derecha: diagrama visual de estado del sistema -->
+        <div class="hero-visual">
+          <div class="system-diagram" aria-label="Diagrama de estado del sistema">
+            <!-- Cada nodo representa un componente con su estado -->
+            <div class="diagram-node">
+              <div class="node-status ok" title="Operativo"></div>
+              <span>💾 Sistema de Almacenamiento</span>
+            </div>
+            <div class="diagram-node">
+              <div class="node-status ok" title="Operativo"></div>
+              <span>🖥️ Servidor Principal</span>
+            </div>
+            <div class="diagram-node">
+              <div class="node-status warn" title="Advertencia"></div>
+              <span>🌐 Red y Conectividad</span>
+            </div>
+            <div class="diagram-node">
+              <div class="node-status ok" title="Operativo"></div>
+              <span>🔒 Seguridad Activa</span>
+            </div>
+            <div class="diagram-node">
+              <div class="node-status info" title="En proceso"></div>
+              <span>🔄 Backup en Progreso</span>
+            </div>
+            <div class="diagram-node">
+              <div class="node-status ok" title="Operativo"></div>
+              <span>⚡ Suministro Eléctrico</span>
+            </div>
+          </div>
+        </div><!-- /hero-visual -->
+
+      </div><!-- /hero-content -->
+    </section><!-- /hero -->
+
+
+    <hr class="section-divider" />
+
+
+    <!-- ──────────────────────────────────────────────────────────────
+         SECCIÓN: MANTENIMIENTO
+         Explica los 4 tipos de mantenimiento de sistemas informáticos
+         en tarjetas con descripciones y listas de actividades.
+         ────────────────────────────────────────────────────────────── -->
+    <section class="section" id="mantenimiento" aria-labelledby="mant-title">
+      <div class="section-header">
+        <span class="section-tag">// tipos de mantenimiento</span>
+        <h2 class="section-title" id="mant-title">
+          Tipos de Mantenimiento
+        </h2>
+        <p class="section-subtitle">
+          El mantenimiento de sistemas informáticos se clasifica según el
+          momento de intervención y el objetivo de la acción correctiva o preventiva.
+        </p>
+      </div>
+
+      <!-- Grid de tarjetas: una por tipo de mantenimiento -->
+      <div class="cards-grid">
+
+        <!-- Tarjeta 1: Mantenimiento Preventivo -->
+        <article class="card" id="preventivo" aria-label="Mantenimiento Preventivo">
+          <div class="card-icon" aria-hidden="true">🛡️</div>
+          <h3 class="card-title">Mantenimiento Preventivo</h3>
+          <p class="card-description">
+            Conjunto de acciones planificadas para evitar fallos antes de que
+            ocurran. Se ejecuta con regularidad para mantener el sistema en
+            condiciones óptimas de funcionamiento.
+          </p>
+          <ul class="card-list" aria-label="Actividades preventivas">
+            <li>Limpieza física de componentes</li>
+            <li>Actualización de drivers y firmware</li>
+            <li>Diagnóstico periódico de discos (SMART)</li>
+            <li>Revisión de logs del sistema</li>
+            <li>Verificación de temperaturas</li>
+          </ul>
+        </article>
+
+        <!-- Tarjeta 2: Mantenimiento Correctivo -->
+        <article class="card" id="correctivo" aria-label="Mantenimiento Correctivo">
+          <div class="card-icon" aria-hidden="true">🔨</div>
+          <h3 class="card-title">Mantenimiento Correctivo</h3>
+          <p class="card-description">
+            Intervención realizada para reparar fallos ya producidos. Su objetivo
+            es restaurar el sistema al estado operativo en el menor tiempo posible
+            minimizando el impacto.
+          </p>
+          <ul class="card-list" aria-label="Actividades correctivas">
+            <li>Diagnóstico y localización de fallos</li>
+            <li>Reemplazo de componentes dañados</li>
+            <li>Recuperación de datos perdidos</li>
+            <li>Reinstalación del sistema operativo</li>
+            <li>Reparación de sectores defectuosos</li>
+          </ul>
+        </article>
+
+        <!-- Tarjeta 3: Mantenimiento Predictivo -->
+        <article class="card" id="predictivo" aria-label="Mantenimiento Predictivo">
+          <div class="card-icon" aria-hidden="true">📊</div>
+          <h3 class="card-title">Mantenimiento Predictivo</h3>
+          <p class="card-description">
+            Monitoreo continuo del estado del sistema para anticipar fallos
+            basándose en indicadores de rendimiento y análisis de tendencias de
+            degradación.
+          </p>
+          <ul class="card-list" aria-label="Actividades predictivas">
+            <li>Monitoreo en tiempo real de métricas</li>
+            <li>Análisis SMART de discos duros</li>
+            <li>Registro de temperatura y voltaje</li>
+            <li>Alertas automáticas por umbrales</li>
+            <li>Análisis de tendencias de rendimiento</li>
+          </ul>
+        </article>
+
+        <!-- Tarjeta 4: Mantenimiento Evolutivo -->
+        <article class="card" id="evolutivo" aria-label="Mantenimiento Evolutivo">
+          <div class="card-icon" aria-hidden="true">🚀</div>
+          <h3 class="card-title">Mantenimiento Evolutivo</h3>
+          <p class="card-description">
+            Mejoras y actualizaciones orientadas a adaptar el sistema a nuevos
+            requerimientos tecnológicos, aumentar su capacidad o incorporar
+            nuevas funcionalidades.
+          </p>
+          <ul class="card-list" aria-label="Actividades evolutivas">
+            <li>Actualización del sistema operativo</li>
+            <li>Ampliación de RAM y almacenamiento</li>
+            <li>Migración a nuevas plataformas</li>
+            <li>Incorporación de periféricos modernos</li>
+            <li>Optimización de configuraciones</li>
+          </ul>
+        </article>
+
+      </div><!-- /cards-grid -->
+    </section><!-- /mantenimiento -->
+
+
+    <hr class="section-divider" />
+
+
+    <!-- ──────────────────────────────────────────────────────────────
+         SECCIÓN: HERRAMIENTAS
+         Presenta las herramientas de software y hardware más usadas
+         en el diagnóstico y mantenimiento de sistemas.
+         ────────────────────────────────────────────────────────────── -->
+    <section class="section" id="herramientas" aria-labelledby="tools-title">
+      <div class="section-header">
+        <span class="section-tag">// herramientas esenciales</span>
+        <h2 class="section-title" id="tools-title">
+          Herramientas de Mantenimiento
+        </h2>
+        <p class="section-subtitle">
+          Software especializado y equipos físicos fundamentales para el
+          diagnóstico, mantenimiento y aseguramiento de sistemas informáticos.
+        </p>
+      </div>
+
+      <!-- ── Sub-sección: Herramientas de Software ── -->
+      <h3 id="software-tools" style="
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--accent-primary);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+      ">💾 Software</h3>
+
+      <div class="tools-grid" style="margin-bottom: 3rem;">
+
+        <!-- Tarjeta de herramienta: CCleaner -->
+        <div class="tool-card" id="diagnostico">
+          <span class="tool-emoji">🧹</span>
+          <div class="tool-name">CCleaner</div>
+          <div class="tool-type">Limpieza del sistema</div>
+          <p class="tool-desc">
+            Elimina archivos temporales, caché y entradas de registro inválidas
+            para optimizar el rendimiento del sistema operativo.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <span class="tool-emoji">🔬</span>
+          <div class="tool-name">CrystalDiskInfo</div>
+          <div class="tool-type">Diagnóstico de discos</div>
+          <p class="tool-desc">
+            Monitorea el estado S.M.A.R.T. de discos duros y SSD, mostrando
+            temperatura y predicción de fallos.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <span class="tool-emoji">🧠</span>
+          <div class="tool-name">MemTest86</div>
+          <div class="tool-type">Diagnóstico de RAM</div>
+          <p class="tool-desc">
+            Herramienta booteable para detectar errores en módulos de memoria
+            RAM con pruebas exhaustivas.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <span class="tool-emoji">📡</span>
+          <div class="tool-name">Wireshark</div>
+          <div class="tool-type">Análisis de red</div>
+          <p class="tool-desc">
+            Captura y analiza paquetes de red en tiempo real para detectar
+            problemas de conectividad y seguridad.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <span class="tool-emoji">🛡️</span>
+          <div class="tool-name">Malwarebytes</div>
+          <div class="tool-type">Seguridad</div>
+          <p class="tool-desc">
+            Detecta y elimina malware, spyware, ransomware y otras amenazas
+            que afectan el rendimiento del sistema.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <span class="tool-emoji">🔧</span>
+          <div class="tool-name">HWiNFO</div>
+          <div class="tool-type">Monitoreo de hardware</div>
+          <p class="tool-desc">
+            Muestra información detallada de todos los componentes del hardware
+            incluyendo sensores en tiempo real.
+          </p>
+        </div>
+
+      </div><!-- /tools software -->
+
+      <!-- ── Sub-sección: Herramientas de Hardware ── -->
+      <h3 id="hardware-tools" style="
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--accent-primary);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+      ">🔌 Hardware</h3>
+
+      <div class="tools-grid">
+
+        <div class="tool-card">
+          <span class="tool-emoji">⚡</span>
+          <div class="tool-name">Multímetro</div>
+          <div class="tool-type">Medición eléctrica</div>
+          <p class="tool-desc">
+            Mide voltaje, corriente y resistencia en fuentes de poder y
+            componentes electrónicos del sistema.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <span class="tool-emoji">🌡️</span>
+          <div class="tool-name">Termómetro IR</div>
+          <div class="tool-type">Temperatura</div>
+          <p class="tool-desc">
+            Mide temperatura sin contacto en componentes del motherboard,
+            procesador y zonas críticas del gabinete.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <span class="tool-emoji">🌬️</span>
+          <div class="tool-name">Compresor de Aire</div>
+          <div class="tool-type">Limpieza física</div>
+          <p class="tool-desc">
+            Expulsa polvo acumulado en disipadores, ventiladores y ranuras
+            de componentes con aire comprimido a presión.
+          </p>
+        </div>
+
+        <div class="tool-card">
+          <span class="tool-emoji">🔌</span>
+          <div class="tool-name">POST Card</div>
+          <div class="tool-type">Diagnóstico de arranque</div>
+          <p class="tool-desc">
+            Tarjeta diagnóstica que muestra códigos POST para identificar
+            fallos durante el proceso de arranque del sistema.
+          </p>
+        </div>
+
+      </div><!-- /tools hardware -->
+
+    </section><!-- /herramientas -->
+
+
+    <hr class="section-divider" />
+
+
+    <!-- ──────────────────────────────────────────────────────────────
+         SECCIÓN: SEGURIDAD
+         Políticas y prácticas de aseguramiento de la operación,
+         incluyendo backups, control de acceso y monitoreo.
+         ────────────────────────────────────────────────────────────── -->
+    <section class="section" id="seguridad" aria-labelledby="sec-title">
+      <div class="section-header">
+        <span class="section-tag">// aseguramiento de la operación</span>
+        <h2 class="section-title" id="sec-title">
+          Seguridad y Aseguramiento
+        </h2>
+        <p class="section-subtitle">
+          Políticas, procedimientos y controles técnicos para garantizar la
+          disponibilidad, integridad y confidencialidad del sistema informático.
+        </p>
+      </div>
+
+      <!-- Layout de dos columnas: políticas + panel de estado -->
+      <div class="security-layout">
+
+        <!-- Lista de políticas de seguridad -->
+        <div class="security-list" id="politicas">
+
+          <!-- Ítem 1 -->
+          <div class="security-item" id="backup">
+            <div class="security-num">01</div>
+            <div class="security-content">
+              <h4>Copias de Seguridad (Backup)</h4>
+              <p>
+                Estrategia 3-2-1: mantener 3 copias de los datos en 2 medios
+                diferentes, con 1 copia fuera del sitio. Automatizar backups
+                diarios incrementales y semanales completos.
+              </p>
+            </div>
+          </div>
+
+          <!-- Ítem 2 -->
+          <div class="security-item" id="acceso">
+            <div class="security-num">02</div>
+            <div class="security-content">
+              <h4>Control de Acceso</h4>
+              <p>
+                Principio de mínimo privilegio: cada usuario solo accede a los
+                recursos necesarios para su función. Autenticación multifactor (MFA)
+                para cuentas privilegiadas.
+              </p>
+            </div>
+          </div>
+
+          <!-- Ítem 3 -->
+          <div class="security-item">
+            <div class="security-num">03</div>
+            <div class="security-content">
+              <h4>Actualizaciones y Parches</h4>
+              <p>
+                Aplicar actualizaciones de seguridad dentro de las primeras 72h
+                de su publicación. Mantener un inventario actualizado de versiones
+                de software en producción.
+              </p>
+            </div>
+          </div>
+
+          <!-- Ítem 4 -->
+          <div class="security-item">
+            <div class="security-num">04</div>
+            <div class="security-content">
+              <h4>Monitoreo y Auditoría</h4>
+              <p>
+                Registrar todos los eventos de acceso y modificaciones del sistema
+                en logs inmutables. Revisar alertas diariamente y establecer
+                correlaciones de eventos sospechosos.
+              </p>
+            </div>
+          </div>
+
+          <!-- Ítem 5 -->
+          <div class="security-item">
+            <div class="security-num">05</div>
+            <div class="security-content">
+              <h4>Plan de Recuperación (DRP)</h4>
+              <p>
+                Documento que define pasos, responsables y tiempos de recuperación
+                ante incidentes. Incluye RTO (tiempo de recuperación objetivo) y
+                RPO (punto de recuperación objetivo).
+              </p>
+            </div>
+          </div>
+
+        </div><!-- /security-list -->
+
+        <!-- Panel de estado del sistema en tiempo real (simulado) -->
+        <div class="system-status">
+          <div class="status-header">
+            <span class="status-title">Estado del Sistema</span>
+            <span class="status-badge">● OPERATIVO</span>
+          </div>
+
+          <!-- Cada barra de progreso muestra un indicador del sistema -->
+          <div class="status-item">
+            <div class="status-label">
+              <span>💻 Uso de CPU</span>
+              <span class="status-value" id="cpuVal">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="cpuBar" data-value="42"></div>
+            </div>
+          </div>
+
+          <div class="status-item">
+            <div class="status-label">
+              <span>🧠 Memoria RAM</span>
+              <span class="status-value" id="ramVal">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="ramBar" data-value="67"></div>
+            </div>
+          </div>
+
+          <div class="status-item">
+            <div class="status-label">
+              <span>💾 Disco C:</span>
+              <span class="status-value" id="diskVal">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="diskBar" data-value="58"></div>
+            </div>
+          </div>
+
+          <div class="status-item">
+            <div class="status-label">
+              <span>🌡️ Temperatura CPU</span>
+              <span class="status-value" id="tempVal">0°C</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="tempBar" data-value="52"></div>
+            </div>
+          </div>
+
+          <div class="status-item">
+            <div class="status-label">
+              <span>🌐 Uso de Red</span>
+              <span class="status-value" id="netVal">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="netBar" data-value="23"></div>
+            </div>
+          </div>
+
+          <div class="status-item">
+            <div class="status-label">
+              <span>🔒 Integridad de Backup</span>
+              <span class="status-value" id="backupVal">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="backupBar" data-value="100"></div>
+            </div>
+          </div>
+
+        </div><!-- /system-status -->
+
+      </div><!-- /security-layout -->
+    </section><!-- /seguridad -->
+
+
+    <hr class="section-divider" />
+
+
+    <!-- ──────────────────────────────────────────────────────────────
+         SECCIÓN: RECURSOS
+         Tarjetas con guías, referencias y materiales de estudio
+         relacionados con el módulo.
+         ────────────────────────────────────────────────────────────── -->
+    <section class="section" id="recursos" aria-labelledby="res-title">
+      <div class="section-header">
+        <span class="section-tag">// materiales de apoyo</span>
+        <h2 class="section-title" id="res-title">
+          Recursos y Materiales
+        </h2>
+        <p class="section-subtitle">
+          Documentos, guías técnicas y referencias externas para profundizar
+          en los temas del módulo.
+        </p>
+      </div>
+
+      <div class="resources-grid">
+
+        <!-- Recurso 1: Guía de mantenimiento preventivo -->
+        <div class="resource-card" id="guias">
+          <span class="resource-type">📄 Guía PDF</span>
+          <div class="resource-title">
+            Checklist de Mantenimiento Preventivo Mensual
+          </div>
+          <p class="resource-desc">
+            Lista de verificación completa con todas las tareas que deben
+            realizarse mensualmente para garantizar el buen estado del hardware
+            y software del sistema informático.
+          </p>
+          <div class="resource-footer">
+            <span>🗓️ Actualizado 2025</span>
+            <span>Nivel: Básico</span>
+          </div>
+        </div>
+
+        <!-- Recurso 2 -->
+        <div class="resource-card">
+          <span class="resource-type">📋 Plantilla</span>
+          <div class="resource-title">
+            Inventario de Hardware y Software
+          </div>
+          <p class="resource-desc">
+            Plantilla para documentar todos los componentes físicos y programas
+            instalados en los equipos de la organización, con fechas de garantía
+            y soporte.
+          </p>
+          <div class="resource-footer">
+            <span>📊 Excel / Google Sheets</span>
+            <span>Nivel: Intermedio</span>
+          </div>
+        </div>
+
+        <!-- Recurso 3 -->
+        <div class="resource-card" id="videos">
+          <span class="resource-type">🎬 Video Tutorial</span>
+          <div class="resource-title">
+            Cómo Usar HWiNFO para Diagnóstico
+          </div>
+          <p class="resource-desc">
+            Video paso a paso que muestra cómo instalar, configurar y
+            interpretar los datos de la herramienta HWiNFO64 para monitoreo
+            de hardware.
+          </p>
+          <div class="resource-footer">
+            <span>⏱️ 18 minutos</span>
+            <span>Nivel: Principiante</span>
+          </div>
+        </div>
+
+        <!-- Recurso 4 -->
+        <div class="resource-card" id="referencias">
+          <span class="resource-type">🔗 Referencia Web</span>
+          <div class="resource-title">
+            Estándar ISO/IEC 20000 — Gestión de TI
+          </div>
+          <p class="resource-desc">
+            Referencia al estándar internacional para la gestión de servicios
+            de TI, que incluye requisitos de mantenimiento, continuidad y
+            mejora de servicios.
+          </p>
+          <div class="resource-footer">
+            <span>🌐 iso.org</span>
+            <span>Nivel: Avanzado</span>
+          </div>
+        </div>
+
+        <!-- Recurso 5 -->
+        <div class="resource-card">
+          <span class="resource-type">📖 Libro Digital</span>
+          <div class="resource-title">
+            Fundamentos de Mantenimiento de Sistemas
+          </div>
+          <p class="resource-desc">
+            Libro de texto completo que cubre desde los conceptos básicos hasta
+            procedimientos avanzados de mantenimiento de hardware, software y redes.
+          </p>
+          <div class="resource-footer">
+            <span>📚 500 páginas</span>
+            <span>Nivel: Completo</span>
+          </div>
+        </div>
+
+        <!-- Recurso 6 -->
+        <div class="resource-card">
+          <span class="resource-type">🎓 Certificación</span>
+          <div class="resource-title">
+            CompTIA A+ — Certificación de Técnico
+          </div>
+          <p class="resource-desc">
+            Información sobre la certificación CompTIA A+, reconocida
+            internacionalmente para técnicos en soporte y mantenimiento de
+            sistemas informáticos.
+          </p>
+          <div class="resource-footer">
+            <span>🌍 CompTIA.org</span>
+            <span>Nivel: Profesional</span>
+          </div>
+        </div>
+
+      </div><!-- /resources-grid -->
+    </section><!-- /recursos -->
+
+
+    <hr class="section-divider" />
+
+
+    <!-- ──────────────────────────────────────────────────────────────
+         SECCIÓN: CONTACTO
+         Información de contacto del módulo y formulario de consultas.
+         ────────────────────────────────────────────────────────────── -->
+    <section class="section" id="contacto" aria-labelledby="cont-title">
+      <div class="section-header">
+        <span class="section-tag">// comunicación</span>
+        <h2 class="section-title" id="cont-title">
+          Contacto y Consultas
+        </h2>
+        <p class="section-subtitle">
+          ¿Tienes dudas sobre el módulo? Envíanos tu consulta y te responderemos
+          a la brevedad posible.
+        </p>
+      </div>
+
+      <div class="contact-layout">
+
+        <!-- Información de contacto -->
+        <div class="contact-info">
+          <h3>Información del Módulo</h3>
+          <p>
+            El módulo de Mantenimiento y Aseguramiento de la Operación del
+            Sistema Informático está disponible para consultas técnicas y
+            académicas durante el horario de clases.
+          </p>
+
+          <div class="contact-detail">
+            <div class="contact-icon" aria-hidden="true">📍</div>
+            <div>
+              <strong>Ubicación</strong><br />
+              <span style="color: var(--text-secondary);">Laboratorio de Informática</span>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-icon" aria-hidden="true">📧</div>
+            <div>
+              <strong>Correo</strong><br />
+              <span style="color: var(--text-secondary);">modulo.tic@educacion.edu</span>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-icon" aria-hidden="true">🕐</div>
+            <div>
+              <strong>Horario de atención</strong><br />
+              <span style="color: var(--text-secondary);">Lunes a Viernes, 8:00 - 17:00</span>
+            </div>
+          </div>
+        </div><!-- /contact-info -->
+
+        <!-- Formulario de contacto -->
+        <!-- Nota: No usa etiqueta <form> — ver style.css SECCIÓN 17 -->
+        <div class="contact-form" role="form" aria-label="Formulario de consulta">
+
+          <!-- Fila con nombre y apellido -->
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="inputNombre">Nombre</label>
+              <input
+                type="text"
+                id="inputNombre"
+                class="form-input"
+                placeholder="Tu nombre"
+                autocomplete="given-name"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inputApellido">Apellido</label>
+              <input
+                type="text"
+                id="inputApellido"
+                class="form-input"
+                placeholder="Tu apellido"
+                autocomplete="family-name"
+              />
+            </div>
+          </div>
+
+          <!-- Correo electrónico -->
+          <div class="form-group">
+            <label class="form-label" for="inputEmail">Correo Electrónico</label>
+            <input
+              type="email"
+              id="inputEmail"
+              class="form-input"
+              placeholder="correo@ejemplo.com"
+              autocomplete="email"
+            />
+          </div>
+
+          <!-- Tema de consulta (selector desplegable) -->
+          <div class="form-group">
+            <label class="form-label" for="inputTema">Tema de Consulta</label>
+            <select id="inputTema" class="form-select">
+              <option value="">Selecciona un tema...</option>
+              <option value="preventivo">Mantenimiento Preventivo</option>
+              <option value="correctivo">Mantenimiento Correctivo</option>
+              <option value="predictivo">Mantenimiento Predictivo</option>
+              <option value="herramientas">Herramientas</option>
+              <option value="seguridad">Seguridad y Backups</option>
+              <option value="recursos">Recursos y Materiales</option>
+              <option value="otro">Otro tema</option>
+            </select>
+          </div>
+
+          <!-- Mensaje -->
+          <div class="form-group">
+            <label class="form-label" for="inputMensaje">Mensaje</label>
+            <textarea
+              id="inputMensaje"
+              class="form-textarea"
+              placeholder="Escribe aquí tu consulta o comentario..."
+              aria-describedby="msgHint"
+            ></textarea>
+            <small id="msgHint" style="color: var(--text-muted); font-size: 0.78rem;">
+              Mínimo 20 caracteres. Sé específico para obtener una mejor respuesta.
+            </small>
+          </div>
+
+          <!-- Botón de envío -->
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="submitBtn"
+            onclick="handleFormSubmit()"
+            aria-label="Enviar consulta"
+          >
+            ✉️ Enviar Consulta
+          </button>
+
+        </div><!-- /contact-form -->
+
+      </div><!-- /contact-layout -->
+    </section><!-- /contacto -->
+
+  </main><!-- /main-content -->
+
+
+  <!-- ================================================================
+       FOOTER
+       Pie de página con columnas de enlaces, descripción y copyright.
+       ================================================================ -->
+  <footer role="contentinfo">
+    <div class="footer-grid">
+
+      <!-- Columna de marca/descripción -->
+      <div class="footer-brand">
+        <a href="#inicio" class="navbar-logo" style="text-decoration:none;">
+          <div class="logo-icon">🖥️</div>
+          <span class="logo-text">Mante<span>Sis</span></span>
+        </a>
+        <p>
+          Recurso educativo para el módulo de Mantenimiento y Aseguramiento
+          de la Operación del Sistema Informático. Diseñado para facilitar el
+          aprendizaje técnico de manera clara y accesible.
+        </p>
+      </div>
+
+      <!-- Columna: Módulo -->
+      <div class="footer-col">
+        <h5>Módulo</h5>
+        <ul class="footer-links">
+          <li><a href="#preventivo">Mantenimiento Preventivo</a></li>
+          <li><a href="#correctivo">Mantenimiento Correctivo</a></li>
+          <li><a href="#predictivo">Mantenimiento Predictivo</a></li>
+          <li><a href="#evolutivo">Mantenimiento Evolutivo</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna: Recursos -->
+      <div class="footer-col">
+        <h5>Recursos</h5>
+        <ul class="footer-links">
+          <li><a href="#guias">Guías y Plantillas</a></li>
+          <li><a href="#videos">Video Tutoriales</a></li>
+          <li><a href="#referencias">Referencias</a></li>
+          <li><a href="#herramientas">Herramientas</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna: Info -->
+      <div class="footer-col">
+        <h5>Información</h5>
+        <ul class="footer-links">
+          <li><a href="#seguridad">Seguridad TI</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="README.md" target="_blank">README</a></li>
+        </ul>
+      </div>
+
+    </div><!-- /footer-grid -->
+
+    <!-- Barra inferior del footer -->
+    <div class="footer-bottom">
+      <span>© 2025 ManteSis — Módulo Educativo. Uso libre con fines académicos.</span>
+      <span style="font-family: var(--font-mono);">v1.0.0 · HTML · CSS · JS</span>
+    </div>
+
+  </footer>
+
+
+  <!-- ================================================================
+       COMPONENTES FLOTANTES
+       Elementos UI que flotan sobre el contenido (toast y back-to-top)
+       ================================================================ -->
+
+  <!-- Notificación toast: aparece brevemente tras enviar el formulario -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span>✅</span>
+    <span>¡Consulta enviada correctamente!</span>
+  </div>
+
+  <!-- Botón para volver al inicio de la página con un clic -->
+  <button
+    class="back-to-top"
+    id="backToTop"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    aria-label="Volver al inicio de la página"
+    title="Ir arriba"
+  >
+    ↑
+  </button>
+
+
+  <!-- ================================================================
+       JAVASCRIPT INLINE
+       Toda la lógica interactiva del sitio está documentada aquí.
+       Funciones: búsqueda, navegación activa, tema, barras de estado,
+       formulario, scroll, menú móvil.
+       ================================================================ -->
+  <script>
+    // ──────────────────────────────────────────────────────────────────
+    // BASE DE DATOS DE BÚSQUEDA
+    // Array que contiene todos los ítems buscables del sitio.
+    // Cada ítem tiene: título, sección de origen, icono y ancla (id).
+    // El motor de búsqueda filtra este array según el input del usuario.
+    // ──────────────────────────────────────────────────────────────────
+    const searchData = [
+      { title: 'Inicio - Presentación del módulo', section: 'Inicio', icon: '🏠', anchor: 'inicio' },
+      { title: 'Mantenimiento Preventivo', section: 'Mantenimiento', icon: '🛡️', anchor: 'preventivo' },
+      { title: 'Mantenimiento Correctivo', section: 'Mantenimiento', icon: '🔨', anchor: 'correctivo' },
+      { title: 'Mantenimiento Predictivo', section: 'Mantenimiento', icon: '📊', anchor: 'predictivo' },
+      { title: 'Mantenimiento Evolutivo', section: 'Mantenimiento', icon: '🚀', anchor: 'evolutivo' },
+      { title: 'Limpieza física de componentes', section: 'Preventivo', icon: '🧹', anchor: 'preventivo' },
+      { title: 'Actualización de drivers', section: 'Preventivo', icon: '⬆️', anchor: 'preventivo' },
+      { title: 'Diagnóstico SMART de discos', section: 'Predictivo', icon: '🔬', anchor: 'predictivo' },
+      { title: 'CCleaner - Limpieza del sistema', section: 'Herramientas', icon: '🧹', anchor: 'herramientas' },
+      { title: 'CrystalDiskInfo - Diagnóstico', section: 'Herramientas', icon: '💾', anchor: 'diagnostico' },
+      { title: 'MemTest86 - Diagnóstico RAM', section: 'Herramientas', icon: '🧠', anchor: 'software-tools' },
+      { title: 'Wireshark - Análisis de red', section: 'Herramientas', icon: '📡', anchor: 'software-tools' },
+      { title: 'Malwarebytes - Seguridad', section: 'Herramientas', icon: '🛡️', anchor: 'software-tools' },
+      { title: 'HWiNFO - Monitoreo hardware', section: 'Herramientas', icon: '🔧', anchor: 'diagnostico' },
+      { title: 'Multímetro - Medición eléctrica', section: 'Hardware', icon: '⚡', anchor: 'hardware-tools' },
+      { title: 'Copias de Seguridad (Backup)', section: 'Seguridad', icon: '💾', anchor: 'backup' },
+      { title: 'Control de Acceso', section: 'Seguridad', icon: '🔑', anchor: 'acceso' },
+      { title: 'Políticas de seguridad TI', section: 'Seguridad', icon: '📋', anchor: 'politicas' },
+      { title: 'Plan de Recuperación (DRP)', section: 'Seguridad', icon: '🔄', anchor: 'seguridad' },
+      { title: 'Monitoreo y Auditoría del sistema', section: 'Seguridad', icon: '📊', anchor: 'seguridad' },
+      { title: 'Checklist de Mantenimiento Mensual', section: 'Recursos', icon: '📄', anchor: 'guias' },
+      { title: 'Plantilla de Inventario de Hardware', section: 'Recursos', icon: '📋', anchor: 'guias' },
+      { title: 'Video Tutorial HWiNFO', section: 'Recursos', icon: '🎬', anchor: 'videos' },
+      { title: 'Estándar ISO/IEC 20000', section: 'Recursos', icon: '🔗', anchor: 'referencias' },
+      { title: 'Certificación CompTIA A+', section: 'Recursos', icon: '🎓', anchor: 'referencias' },
+      { title: 'Formulario de Contacto', section: 'Contacto', icon: '✉️', anchor: 'contacto' },
+    ];
+
+    // ──────────────────────────────────────────────────────────────────
+    // FUNCIÓN: initSearch()
+    // Inicializa la funcionalidad de búsqueda en tiempo real.
+    // Escucha el evento "input" en el campo de búsqueda y filtra
+    // el array searchData según el texto ingresado.
+    // ──────────────────────────────────────────────────────────────────
+    function initSearch() {
+      const input = document.getElementById('searchInput');
+      const results = document.getElementById('searchResults');
+      const clearBtn = document.getElementById('searchClear');
+
+      // Escuchar cambios en el campo de búsqueda
+      input.addEventListener('input', function () {
+        const query = this.value.trim().toLowerCase();
+
+        // Mostrar/ocultar botón de limpiar
+        clearBtn.style.display = query.length > 0 ? 'block' : 'none';
+
+        // Si está vacío, ocultar resultados
+        if (query.length === 0) {
+          results.style.display = 'none';
+          return;
+        }
+
+        // Filtrar los ítems cuyo título o sección contienen el texto
+        const filtered = searchData.filter(item =>
+          item.title.toLowerCase().includes(query) ||
+          item.section.toLowerCase().includes(query)
+        );
+
+        // Construir HTML de los resultados
+        if (filtered.length === 0) {
+          // Sin resultados: mostrar mensaje
+          results.innerHTML = `
+            <div class="search-no-results">
+              🔍 No se encontraron resultados para "<strong>${query}</strong>"
+            </div>`;
+        } else {
+          // Mostrar hasta 8 resultados para no sobrecargar
+          results.innerHTML = filtered.slice(0, 8).map(item => `
+            <div class="search-result-item"
+                 onclick="goToSection('${item.anchor}')"
+                 role="option"
+                 tabindex="0">
+              <span class="search-result-icon">${item.icon}</span>
+              <div>
+                <div class="search-result-title">${item.title}</div>
+                <div class="search-result-section">📂 ${item.section}</div>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        results.style.display = 'block'; // Mostrar el panel de resultados
+      });
+
+      // Limpiar búsqueda al hacer clic en el botón X
+      clearBtn.addEventListener('click', function () {
+        input.value = '';
+        results.style.display = 'none';
+        clearBtn.style.display = 'none';
+        input.focus();
+      });
+
+      // Cerrar resultados al hacer clic fuera del campo
+      document.addEventListener('click', function (e) {
+        if (!input.closest('.search-container').contains(e.target)) {
+          results.style.display = 'none';
+        }
+      });
+    }
+
+    // ──────────────────────────────────────────────────────────────────
+    // FUNCIÓN: goToSection(id)
+    // Navega suavemente hacia una sección por su id y cierra la búsqueda.
+    // ──────────────────────────────────────────────────────────────────
+    function goToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      // Cerrar y limpiar la búsqueda tras navegar
+      document.getElementById('searchResults').style.display = 'none';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('searchClear').style.display = 'none';
+    }
+
+    // ──────────────────────────────────────────────────────────────────
+    // FUNCIÓN: initThemeToggle()
+    // Alterna entre tema oscuro y tema claro.
+    // Persiste la preferencia en localStorage para recordar la elección.
+    // ──────────────────────────────────────────────────────────────────
+    function initThemeToggle() {
+      const btn = document.getElementById('themeToggle');
+
+      // Recuperar tema guardado previamente
+      const saved = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', saved);
+      btn.textContent = saved === 'dark' ? '🌙' : '☀️';
+
+      btn.addEventListener('click', function () {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next); // Guardar preferencia
+        btn.textContent = next === 'dark' ? '🌙' : '☀️';
+      });
+    }
+
+    // ──────────────────────────────────────────────────────────────────
+    // FUNCIÓN: initMobileMenu()
+    // Controla el menú hamburguesa para dispositivos móviles.
+    // Al hacer clic, muestra/oculta el menú vertical.
+    // ──────────────────────────────────────────────────────────────────
+    function initMobileMenu() {
+      const btn = document.getElementById('mobileMenuBtn');
+      const menu = document.getElementById('navMenu');
+
+      btn.addEventListener('click', function () {
+        const isOpen = menu.classList.toggle('mobile-open');
+        btn.setAttribute('aria-expanded', isOpen); // Accesibilidad
+      });
+
+      // Cerrar menú al hacer clic en cualquier enlace de navegación
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menu.classList.remove('mobile-open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // ──────────────────────────────────────────────────────────────────
+    // FUNCIÓN: initActiveMenu()
+    // Resalta el ítem del menú correspondiente a la sección visible.
+    // Usa IntersectionObserver para detectar qué sección está en pantalla.
+    // ──────────────────────────────────────────────────────────────────
+    function initActiveMenu() {
+      const sections = document.querySelectorAll('main section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      // IntersectionObserver: se ejecuta cuando una sección entra/sale de vista
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach(link => {
+              link.classList.remove('active');
+              // Marcar como activo si el href del enlace apunta a esta sección
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }, {
+        rootMargin: '-30% 0px -60% 0px', // Activar cuando el centro de la sección es visible
+        threshold: 0
+      });
+
+      sections.forEach(s => observer.observe(s));
+    }
+
+    // ──────────────────────────────────────────────────────────────────
+    // FUNCIÓN: initScrollAnimations()
+    // Anima las secciones con efecto fade-in al hacer scroll.
+    // Agrega la clase "visible" cuando la sección entra en el viewport.
+    // ──────────────────────────────────────────────────────────────────
+    function initScrollAnimations() {
+      const sections = document.querySelectorAll('.section');
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible'); // El CSS maneja el efecto
+          }
+        });
+      }, { threshold: 0.08 }); // Se activa cuando el 8% de la sección es visible
+
+      sections.forEach(s => observer.observe(s));
+    }
+
+    // ──────────────────────────────────────────────────────────────────
+    // FUNCIÓN: initProgressBars()
+    // Anima las barras de progreso del panel de estado del sistema.
+    // Los valores vienen del atributo data-value de cada barra.
+    // ──────────────────────────────────────────────────────────────────
+    function initProgressBars() {
+      // Mapeo de barra → elemento de valor de texto
+      const barMap = [
+        { bar: 'cpuBar',    val: 'cpuVal',    suffix: '%',  label: null },
+        { bar: 'ramBar',    val: 'ramVal',    suffix: '%',  label: null },
+        { bar: 'diskBar',   val: 'diskVal',   suffix: '%',  label: null },
+        { bar: 'tempBar',   val: 'tempVal',   suffix: '°C', label: null, multiplier: 1 },
+        { bar: 'netBar',    val: 'netVal',    suffix: '%',  label: null },
+        { bar: 'backupBar', val: 'backupVal', suffix: '%',  label: null },
+      ];
+
+      // Usar IntersectionObserver para iniciar la animación cuando la sección es visible
+      const panel = document.querySelector('.system-status');
+      if (!panel) return;
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            barMap.forEach(item => {
+              const barEl = document.getElementById(item.bar);
+              const valEl = document.getElementById(item.val);
+              if (!barEl || !valEl) return;
+
+              const target = parseInt(barEl.getAttribute('data-value'), 10);
+
+              // Animar el ancho de la barra de 0 a target
+              requestAnimationFrame(() => {
+                barEl.style.width = target + '%';
+              });
+
+              // Animar el número contando desde 0 hasta target
+              let current = 0;
+              const step = target / 40; // 40 pasos de animación
+              const interval = setInterval(() => {
+                current = Math.min(current + step, target);
+                const display = item.bar === 'tempBar'
+                  ? Math.round(current * 0.85) // Temperatura: escalar el % a grados
+                  : Math.round(current);
+                valEl.textContent = display + item.suffix;
+                if (current >= target) clearInterval(interval);
+              }, 30);
+            });
+            observer.disconnect(); // Animar solo una vez
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(panel);
+    }
+
+    // ──────────────────────────────────────────────────────────────────
+    // FUNCIÓN: initBackToTop()
+    // Muestra/oculta el botón "volver arriba" según la posición del scroll.
+    // El botón aparece después de hacer scroll 300px hacia abajo.
+    // ──────────────────────────────────────────────────────────────────
+    function initBackToTop() {
+      const btn = document.getElementById('backToTop');
+
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      });
+    }
+
+    // ──────────────────────────────────────────────────────────────────
+    // FUNCIÓN: handleFormSubmit()
+    // Valida y simula el envío del formulario de contacto.
+    // Muestra un toast de confirmación si los campos están completos.
+    // ──────────────────────────────────────────────────────────────────
+    function handleFormSubmit() {
+      const nombre   = document.getElementById('inputNombre').value.trim();
+      const email    = document.getElementById('inputEmail').value.trim();
+      const tema     = document.getElementById('inputTema').value;
+      const mensaje  = document.getElementById('inputMensaje').value.trim();
+
+      // Validación básica: todos los campos obligatorios deben estar llenos
+      if (!nombre || !email || !tema || mensaje.length < 20) {
+        alert('⚠️ Por favor completa todos los campos.\nEl mensaje debe tener al menos 20 caracteres.');
+        return;
+      }
+
+      // Validación de formato de email con expresión regular
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('⚠️ Por favor ingresa un correo electrónico válido.');
+        return;
+      }
+
+      // Mostrar toast de confirmación
+      showToast('✅ ¡Consulta enviada correctamente! Te responderemos pronto.');
+
+      // Limpiar el formulario después del envío
+      document.getElementById('inputNombre').value   = '';
+      document.getElementById('inputApellido').value = '';
+      document.getElementById('inputEmail').value    = '';
+      document.getElementById('inputTema').value     = '';
+      document.getElementById('inputMensaje').value  = '';
+    }
+
+    // ──────────────────────────────────────────────────────────────────
+    // FUNCIÓN: showToast(message)
+    // Muestra una notificación temporal (toast) en la esquina inferior.
+    // Desaparece automáticamente después de 3.5 segundos.
+    // ──────────────────────────────────────────────────────────────────
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.querySelector('span:last-child').textContent = message;
+      toast.classList.add('show');      // El CSS maneja la animación de entrada
+      setTimeout(() => {
+        toast.classList.remove('show'); // Ocultar tras 3.5 segundos
+      }, 3500);
+    }
+
+    // ──────────────────────────────────────────────────────────────────
+    // INICIALIZACIÓN PRINCIPAL
+    // Se ejecuta cuando todo el DOM está listo (DOMContentLoaded).
+    // Llama a todas las funciones de inicialización en orden.
+    // ──────────────────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', function () {
+      initSearch();            // Activar barra de búsqueda
+      initThemeToggle();       // Activar toggle de tema
+      initMobileMenu();        // Activar menú hamburguesa
+      initActiveMenu();        // Resaltar sección activa en navbar
+      initScrollAnimations();  // Animar secciones al hacer scroll
+      initProgressBars();      // Animar barras de estado del sistema
+      initBackToTop();         // Mostrar/ocultar botón volver arriba
+    });
+
+  </script>
+
 </body>
 </html>
